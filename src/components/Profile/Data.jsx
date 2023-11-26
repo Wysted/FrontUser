@@ -1,26 +1,35 @@
 import "./Data.css";
-export default function Data({ children }) {
+
+export default function Data({
+    children,
+    nombre,
+    apellidoPaterno,
+    apellidoMaterno,
+    fono,
+}) {
     return (
         <div className="container_data">
             <div className="container_img">
-                <img src="https://http.cat/101" alt="Gato" />
+                <img
+                    src="https://http.cat/101"
+                    alt="Gato"
+                />
             </div>
             <div className="info_box">
                 <div className="info_item">
                     <label>Nombre</label>
-                    <span>Ramon</span>
+                    <span>{nombre}</span>
                 </div>
                 <div className="info_item">
                     <label>Apellidos</label>
-                    <span>Luis Ayala</span>
+                    <span>
+                        {apellidoPaterno} {apellidoMaterno}
+                    </span>
                 </div>
-                <div className="info_item">
-                    <label>Genero</label>
-                    <span>Masculino</span>
-                </div>
+
                 <div className="info_item">
                     <label>Numero</label>
-                    <span>123456789</span>
+                    <span>{fono}</span>
                 </div>
                 <div className="info_item">
                     <label>Fecha de nacimiento</label>

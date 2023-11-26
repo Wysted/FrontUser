@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 
 export const ChangeData = Yup.object().shape({
-    name: Yup.string().required("El nombre es requerido"),
-    lastName: Yup.string().required("Los apellidos son requerido"),
-    cellphone: Yup.string().required("El numero de telefono es requerido"),
+    name: Yup.string().optional(),
+    lastName: Yup.string().optional(),
+    lastName2: Yup.string().optional(),
+    cellphone: Yup.string().optional(),
 });

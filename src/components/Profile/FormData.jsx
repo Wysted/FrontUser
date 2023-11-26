@@ -3,19 +3,47 @@ import InputProfile from "./InputProfile";
 import { ChangeData } from "../../utils/schemas/changeData";
 import ButtonSubmit from "../Form/ButtonSubmit";
 import InputFile from "../Form/InputFile";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { updateUser } from "../../api";
 import "./FormData.css";
-export default function FormData({ children }) {
-    const submit = () => {
-        console.log("a");
+export default function FormData({
+    children,
+    nombre,
+    apellidoPaterno,
+    apellidoMaterno,
+    fono,
+    setUpdate,
+}) {
+    const [user, _] = useState({
+        Nombre: nombre,
+        Apellido: apellidoPaterno,
+        SegundoApellido: apellidoMaterno,
+        Fono: fono,
+    });
+    const { tokenCookie } = useContext(AuthContext);
+
+    const submit = async (values) => {
+        const updatedUser = {
+            Nombre: values.name,
+            Apellido: values.lastName,
+            SegundoApellido: values.lastName2,
+            Fono: values.cellPhone,
+        };
+
+        const response = await updateUser(tokenCookie, updatedUser);
+        setUpdate(false);
+        console.log("Usuario actualizado con éxito:", response);
     };
     return (
         <>
             <div className="button_back"> {children}</div>
             <Formik
                 initialValues={{
-                    name: "",
-                    lastName: "",
-                    cellPhone: "",
+                    name: user.Nombre,
+                    lastName: user.Apellido,
+                    lastName2: user.SegundoApellido,
+                    cellPhone: user.Fono,
                 }}
                 onSubmit={submit}
                 validationSchema={ChangeData}
@@ -29,34 +57,27 @@ export default function FormData({ children }) {
                             name="name"
                             type="text"
                             content="Nombre"
-                            placeholder="Mario"
+                            placeholder={user.Nombre}
                         />
                         <InputProfile
                             name="lastName"
                             type="text"
-                            content="Apellidos"
-                            placeholder="Perez Perez"
+                            content="Apellido Paterno"
+                            placeholder={user.Apellido}
                         />
                     </div>
                     <div className="container_data_form1">
                         <InputProfile
-                            name="Genero"
-                            type="list"
-                            list="gender"
-                            content="Genero"
+                            name="lastName2"
+                            type="text"
+                            content="Apellido Materno"
+                            placeholder={user.SegundoApellido}
                         />
-
-                        <datalist id="gender">
-                            <option value="Masculino" />
-                            <option value="Femenino" />
-                            <option value="Otros" />
-                        </datalist>
-
                         <InputProfile
                             name="cellphone"
                             type="text"
                             content="Telefono"
-                            placeholder="+569123123123"
+                            placeholder={user.Fono}
                         />
                     </div>
                     <div className="container_data_form2">

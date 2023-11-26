@@ -1,11 +1,11 @@
 import "./Data.css";
-export default function Acces({ children }) {
+export default function Acces({ children, email }) {
     return (
         <div className="container_data">
             <div className="info_box">
                 <div className="info_item">
                     <label>Correo</label>
-                    <span>test.1@gmail.com</span>
+                    <span>{email}</span>
                 </div>
                 <div className="info_item">
                     <label>Contraseña</label>

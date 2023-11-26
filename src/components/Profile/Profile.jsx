@@ -1,15 +1,37 @@
 import "./Profile.css";
 import Menu from "../Menu/index";
 import Data from "./Data";
+import { useLocation } from "wouter";
 import FormData from "./FormData";
 import Access from "./Access";
 import FormAccess from "./FormAccess";
-import { useState } from "react";
-
-// <Data>
-//<button className="button_basic_data">a</button>
-//</Data>
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { getUser } from "../../api";
 export default function Profile() {
+    const [user, setUser] = useState({
+        Nombre: "",
+        ApellidoMaterno: "",
+        ApellidoPaterno: "",
+        Fono: "",
+        Email: "",
+    });
+    const [, setLocation] = useLocation();
+
+    const { isAuthenticated, tokenCookie } = useContext(AuthContext);
+
+    useEffect(() => {
+        const get_user = async () => {
+            setUser(await getUser({ token: tokenCookie }));
+        };
+        // 2. Usa useEffect
+        if (isAuthenticated) {
+            get_user();
+        } else {
+            setLocation("/login");
+        }
+    }, [setLocation, isAuthenticated, tokenCookie]);
+
     const [toggle, setToggle] = useState(false);
     const [toggle2, setToggle2] = useState(false);
     const changeToggle = () => {
@@ -27,7 +49,13 @@ export default function Profile() {
                 <div className="information">
                     <h1 className="title_data">Datos basicos</h1>
                     {toggle ? (
-                        <FormData>
+                        <FormData
+                            nombre={user.Nombre}
+                            apellidoMaterno={user.SegundoApellido}
+                            apellidoPaterno={user.Apellido}
+                            fono={user.Fono}
+                            setUpdate={setToggle}
+                        >
                             <svg
                                 viewBox="0 0 32 32"
                                 width={20}
@@ -44,7 +72,12 @@ export default function Profile() {
                             </svg>
                         </FormData>
                     ) : (
-                        <Data>
+                        <Data
+                            nombre={user.Nombre}
+                            apellidoMaterno={user.SegundoApellido}
+                            apellidoPaterno={user.Apellido}
+                            fono={user.Fono}
+                        >
                             <button
                                 onClick={changeToggle}
                                 className="button_basic_data"
@@ -60,7 +93,7 @@ export default function Profile() {
                     {toggle2 ? (
                         <FormAccess />
                     ) : (
-                        <Access>
+                        <Access email={user.Email}>
                             <button
                                 onClick={changeToggle2}
                                 className="button_basic_data"

@@ -50,7 +50,9 @@ export async function login({ email, password }) {
             body: formData,
         });
 
-        return response.status;
+        const data = await response.json();
+
+        return data;
     } catch (error) {
         console.error("Error al iniciar sesión:", error);
         // Puedes manejar el error de alguna manera o simplemente devolver un código de error, como -1
@@ -101,6 +103,25 @@ export async function register({
         return -1;
     }
 }
+export async function getUser({ token }) {
+    try {
+        const response = await fetch(baseURL + "/user", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`, // Reemplaza 'TU_TOKEN_AQUI' con tu token real
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    } catch (error) {
+        console.error("Error al recibir al usuario:", error);
+        // Puedes manejar el error de alguna manera o simplemente devolver un código de error, como -1
+        return -1;
+    }
+}
 
 export async function resetPassword({ email }) {
     try {
@@ -117,5 +138,26 @@ export async function resetPassword({ email }) {
         console.error("Error al iniciar sesión:", error);
         // Puedes manejar el error de alguna manera o simplemente devolver un código de error, como -1
         return -1;
+    }
+}
+export async function updateUser(token, data) {
+    try {
+        const res = await fetch(baseURL + "/user/update", {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(data), // Convierte los datos a JSON
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        return res.json();
+    } catch (e) {
+        console.error("Error al actualizar los datos del usuario", e);
+        throw e; // Relanzar el error para que pueda ser manejado por el llamador
     }
 }

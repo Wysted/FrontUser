@@ -7,27 +7,21 @@ import { Formik, Form } from "formik";
 import { Link, useLocation } from "wouter";
 import { register } from "../../api";
 import { RegisterSchema } from "../../utils/schemas/registerSchema";
-
-const email2 = (email) => {
-    const correo = "test@gmail.com";
-    if (email === correo) {
-        return 406;
-    } else {
-        return 200;
-    }
-};
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Register() {
     const [password, setPassword] = useState(true);
     const [res, setRes] = useState(null);
     const [, setLocation] = useLocation(); // 2. Usar el hook useLocation
+    const { isAuthenticated } = useContext(AuthContext);
     useEffect(() => {
         // 2. Usa useEffect
-        if (res === 200) {
-            setLocation("/");
+        if (isAuthenticated) {
+            setLocation("/user/profile");
         }
         console.log(res);
-    }, [res, setLocation]);
+    }, [res, setLocation, isAuthenticated]);
 
     const handleSubmit = async (values) => {
         const result = await register({
