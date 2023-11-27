@@ -1,3 +1,5 @@
+/* Order.css */
+
 .container {
     display: flex;
     justify-content: center;
@@ -6,6 +8,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 .content {
     display: flex;
     flex-direction: column;
@@ -13,6 +16,7 @@
     width: 70%;
     background: #f8f8f8;
 }
+
 .content-tittle {
     width: 100%;
     height: 100%;
@@ -26,39 +30,60 @@
     color: white;
     background-color: #023047;
 }
+
 .container-article {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
     padding: 1rem;
 }
+
 .Article-container {
     display: flex;
-    flex: 1 0 20%;
-    padding: 1rem;
+    flex: 50%;
+    padding: 0.6rem;
     align-items: center;
-    flex-direction: column;
     border-radius: 1rem;
     border: 1px solid black;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 1rem;
 }
-.site {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-}
-.datos {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-}
+
+.site,
+.datos,
 .details {
     display: flex;
     flex-direction: column;
     width: 100%;
-    justify-content: left;
 }
+
 .details span {
     padding-right: 1rem;
+}
+
+.left-section,
+.center-section,
+.right-section {
+    width: 33.33%;
+    /* Distribuir el ancho en 3 partes iguales */
+    text-align: left;
+    /* O el estilo deseado para cada sección */
+}
+
+.left-section {
+    text-align: center;
+}
+
+.center-section {
+    text-align: center;
+}
+
+.right-section {
+    text-align: center;
+}
+
+
+
+.buttons {
+    margin-top: center;
 }

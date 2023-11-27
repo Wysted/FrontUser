@@ -8,13 +8,13 @@ function UserMenu() {
     return (
         <div className="user-menu">
             <ul className="horizontal-menu">
-                <Link href="/user/profile/order">
-                    <li>Mis Reservas</li>
-                </Link>
                 <Link href="/user/profile">
                     <li>Perfil</li>
                 </Link>
-                <li>Otra Opción</li>
+                <Link href="/user/profile/order">
+                    <li>Mis Reservas</li>
+                </Link>
+
                 <li onClick={logoutContext}>Cerrar Sesión</li>
             </ul>
         </div>
