@@ -87,3 +87,57 @@
 .buttons {
     margin-top: center;
 }
+
+/* Media query para pantallas menores a 769px */
+@media screen and (max-width: 768px) {
+    .content {
+        width: 100%;
+        /* Reducir el ancho del contenido */
+        margin: 0 auto;
+        /* Centrar el contenido */
+    }
+
+    .Article-container {
+        flex: 100%;
+        /* Hacer que los artículos ocupen el 100% del ancho */
+        margin: 0.5rem;
+        /* Reducir el margen entre artículos */
+    }
+
+    .site,
+    .datos,
+    .details {
+        width: 100%;
+        /* Hacer que las secciones ocupen todo el ancho */
+        margin-bottom: 1rem;
+        /* Agregar espacio entre secciones */
+    }
+}
+
+
+/* Media query para pantallas menores a 475px */
+/* Media query para pantallas menores a 475px */
+@media screen and (max-width: 474px) {
+    .content {
+        width: 100%;
+        /* Hacer que el contenido ocupe todo el ancho disponible */
+    }
+
+    .Article-container {
+        flex-direction: column;
+        /* Mostrar los artículos de manera vertical */
+        align-items: center;
+        /* Centrar los elementos verticalmente */
+        margin: 0.3rem;
+        /* Reducir el margen entre artículos */
+    }
+
+    .site,
+    .datos,
+    .details {
+        width: 100%;
+        /* Hacer que las secciones ocupen todo el ancho */
+        margin-bottom: 1rem;
+        /* Agregar espacio entre secciones */
+    }
+}

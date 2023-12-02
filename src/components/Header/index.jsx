@@ -8,12 +8,12 @@ const Header = () => {
     return (
         <header className="header">
             <div className="left-section">
-                <Logo />
-                <NavItem icon={<FaSuitcase />} text="Paquetes" />
-                <NavItem icon={<FaQuestionCircle />} text="Ayuda" />
-            </div>
-            <div className="right-section">
-                <LoginButton />
+                <img
+                    src="/logo.png"
+                    alt="Logo"
+                    style={{ width: "15%", height: "auto" }}
+
+                />
             </div>
         </header>
     );

@@ -1,22 +1,23 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import StarRating from "react-rating-stars-component";
 import Input from "../Form/Input";
 import { Formik, Form } from "formik";
 import "./Modal.css";
 
 const RatingModal = ({ onCancel, onConfirm }) => {
-    const [calificación, setCalificación] = useState(0);
+    const [calificacion, setCalificacion] = useState(0);
 
     const handleRatingChange = (newRating) => {
-        setCalificación(newRating);
+        setCalificacion(newRating);
     };
 
-    const handleSubmit = (formik) => {
-        // Aquí puedes realizar alguna acción con la calificación
-        console.log(calificación);
+    const handleSubmit = (values, formikBag) => {
+        // Realizar acción con la calificación y el comentario
+        console.log("Calificación:", calificacion);
+        console.log("Comentario:", values.comentario);
+
         onConfirm(); // Llama a la función onConfirm para cerrar el modal
-        formik.submitForm();
+        formikBag.resetForm();
     };
 
     return (
