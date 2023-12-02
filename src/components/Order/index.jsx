@@ -1,14 +1,16 @@
 import "./Order.css";
 import Menu from "../Menu/index";
 import { getPedidos } from "../../api/orderApi";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Article from "./Article";
+import { AuthContext } from "../../context/AuthContext";
 function Order() {
+    const {tokenCookie} = useContext(AuthContext);
     const [order, setOrder] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getPedidos();
+            const data = await getPedidos(tokenCookie);
             setOrder(data.misReservas);
         };
 
@@ -21,23 +23,7 @@ function Order() {
             <div className="content">
                 <h1 className="content-tittle">Pedidos</h1>
                 <div className="container-article">
-                    {ordersArray.length > 0 ? (
-                        ordersArray.map((orde) => {
-                            return (
-                                <Article
-                                    key={orde.idReserva}
-                                    Freserva={orde.fechaReserva}
-                                    Fviaje={orde.fechaViaje}
-                                    origen={orde.origen}
-                                    destino={orde.destino}
-                                    estado={orde.estado}
-                                    detalles={orde.detalles}
-                                />
-                            );
-                        })
-                    ) : (
-                        <h1>No hay pedidos</h1>
-                    )}
+                    
                 </div>
             </div>
         </div>

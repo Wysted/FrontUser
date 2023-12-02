@@ -1,25 +1,22 @@
-const baseURL = "../../public/ejemplos.json";
-export async function getPedidos() {
-    try {
-        const response = await fetch(baseURL);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error("Error al buscas los pedidos");
-    }
-}
+const baseURL = "http://localhost:3000";
 
-export async function getPedidosPendientes() {
+
+export async function getPedidos({ token }) {
     try {
-        // Haciendo una solicitud GET a la ruta /login-google en tu servidor
+        const response = await fetch(baseURL + "/user/mis_reservas", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`, // Reemplaza 'TU_TOKEN_AQUI' con tu token real
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
     } catch (error) {
-        console.error("Error al buscas los pedidos");
-    }
-}
-export async function getPedidosRealizados() {
-    try {
-        // Haciendo una solicitud GET a la ruta /login-google en tu servidor
-    } catch (error) {
-        console.error("Error al buscas los pedidos");
+        console.error("Error al recibir al usuario:", error);
+        // Puedes manejar el error de alguna manera o simplemente devolver un código de error, como -1
+        return -1;
     }
 }
