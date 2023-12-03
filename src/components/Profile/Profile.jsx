@@ -1,10 +1,8 @@
 import "./Profile.css";
 import Menu from "../Menu/index";
 import Data from "./Data";
-import { useLocation } from "wouter";
 import FormData from "./FormData";
 import Access from "./Access";
-import FormAccess from "./FormAccess";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { getUser } from "../../api";
@@ -16,7 +14,6 @@ export default function Profile() {
         Fono: "",
         Email: "",
     });
-    const [, setLocation] = useLocation();
 
     const { isAuthenticated, tokenCookie } = useContext(AuthContext);
 
@@ -27,19 +24,14 @@ export default function Profile() {
         // 2. Usa useEffect
         if (isAuthenticated) {
             get_user();
-        } else {
-            setLocation("/login");
         }
-    }, [setLocation, isAuthenticated, tokenCookie]);
+    }, [isAuthenticated, tokenCookie]);
 
     const [toggle, setToggle] = useState(false);
-    const [toggle2, setToggle2] = useState(false);
     const changeToggle = () => {
         setToggle(!toggle);
     };
-    const changeToggle2 = () => {
-        setToggle2(!toggle2);
-    };
+
     return (
         <div className="main_container">
             <Menu />
@@ -90,18 +82,12 @@ export default function Profile() {
 
                 <div className="information">
                     <h1 className="title_data">Datos de acceso</h1>
-                    {toggle2 ? (
-                        <FormAccess />
-                    ) : (
-                        <Access email={user.Email}>
-                            <button
-                                onClick={changeToggle2}
-                                className="button_basic_data"
-                            >
-                                Cambiar contraseña
-                            </button>
-                        </Access>
-                    )}
+
+                    <Access email={user.Email}>
+                        <button className="button_basic_data">
+                            Cambiar contraseña
+                        </button>
+                    </Access>
                 </div>
             </div>
         </div>

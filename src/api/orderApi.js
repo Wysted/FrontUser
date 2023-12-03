@@ -1,7 +1,6 @@
-const baseURL = "http://localhost:3000";
+const baseURL = "http://localhost:3001";
 
-
-export async function getPedidos({ token }) {
+export async function getPedidos(token) {
     try {
         const response = await fetch(baseURL + "/user/mis_reservas", {
             method: "GET",

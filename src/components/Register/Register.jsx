@@ -14,14 +14,6 @@ export default function Register() {
     const [password, setPassword] = useState(true);
     const [res, setRes] = useState(null);
     const [, setLocation] = useLocation(); // 2. Usar el hook useLocation
-    const { isAuthenticated } = useContext(AuthContext);
-    useEffect(() => {
-        // 2. Usa useEffect
-        if (isAuthenticated) {
-            setLocation("/user/profile");
-        }
-        console.log(res);
-    }, [res, setLocation, isAuthenticated]);
 
     const handleSubmit = async (values) => {
         const result = await register({

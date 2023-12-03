@@ -6,7 +6,6 @@ import { resetPassword } from "../../api";
 export default function ForgotPasword() {
     const handleSubmit = async (values) => {
         const status = await resetPassword({ email: values.email });
-        console.log(status);
     };
     return (
         <main className="container-forgotPassword">

@@ -12,9 +12,9 @@ const Header = () => {
                     src="/logo.png"
                     alt="Logo"
                     style={{ width: "15%", height: "auto" }}
-
                 />
             </div>
+            <LoginButton />
         </header>
     );
 };

@@ -3,24 +3,17 @@ import Input from "../Form/Input";
 import ButtonSubmit from "../Form/ButtonSubmit";
 import ButtonSocial from "../Form/ButtonSocial";
 import { FacebookIcon, GoogleIcon } from "../Icons";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { loginWithGoogle } from "../../api";
 import { Formik, Form } from "formik";
 import { LoginSchema } from "../../utils/schemas/loginSchema";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 function Login() {
     const [res, setRes] = useState(null);
-    const [, setLocation] = useLocation(); // 2. Usar el hook useLocation
-    const { loginContext, isAuthenticated } = useContext(AuthContext);
+    const { loginContext } = useContext(AuthContext);
 
-    useEffect(() => {
-        // 2. Usa useEffect
-        if (isAuthenticated) {
-            setLocation("/user/profile");
-        }
-    }, [res, setLocation, isAuthenticated]);
     const handleSubmit = async (values) => {
         const data = await loginContext({
             email: values.email,
