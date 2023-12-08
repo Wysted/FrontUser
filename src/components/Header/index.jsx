@@ -8,11 +8,7 @@ const Header = () => {
     return (
         <header className="header">
             <div className="left-section">
-                <img
-                    src="/logo.png"
-                    alt="Logo"
-                    style={{ width: "15%", height: "auto" }}
-                />
+                <Logo />
             </div>
             <LoginButton />
         </header>

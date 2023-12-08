@@ -33,10 +33,11 @@
 
 .logo img {
     object-fit: contain;
-    height: 8%;
-    width: 8%;
+    height: auto;
+    width: 60px;
     cursor: pointer;
 }
+
 /* 100% responsive */
 
 /* Estilos para el componente NavItem */
@@ -50,5 +51,6 @@
 }
 
 .nav-item .nav-text {
-    color: #fff; /* Puedes ajustar el color del texto según tus necesidades */
+    color: #fff;
+    /* Puedes ajustar el color del texto según tus necesidades */
 }
