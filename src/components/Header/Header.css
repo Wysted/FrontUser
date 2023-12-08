@@ -1,56 +1,48 @@
-.header {
-    background-color: #023047;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    color: #fff;
+.container-logo {
+    font-size: x-large;
+    padding: 15px;
+}
+.logo_header {
+    width: 5rem;
+    transition: transform 0.5s ease;
 }
 
-.header .left-section {
-    display: flex;
-    align-items: center;
+.logo_header:hover {
+    transform: scale(1.1);
 }
 
-.header .right-section {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
+.navbar-toggler-icon {
+    stroke: white !important;
 }
 
-.header .login-button {
+.navbar-toggler {
+    background-color: #fb8500 !important;
+}
+
+nav {
+    margin-top: 0 !important;
+    font-weight: 700;
+}
+
+.link-izq {
+    color: white;
+    margin: 0 20px;
+}
+
+.link-izq:hover {
+    color: #e17700;
+}
+
+.btn {
+    color: white !important;
     background-color: #fb8500;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    font-weight: 700;
 }
 
-/* Estilos para el componente Logo */
-
-.logo img {
-    object-fit: contain;
-    height: auto;
-    width: 60px;
-    cursor: pointer;
+.btn:hover {
+    background-color: #e17700 !important;
 }
 
-/* 100% responsive */
-
-/* Estilos para el componente NavItem */
-
-.header .nav-item {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-weight: bold;
-    color: #fb8500;
-}
-
-.nav-item .nav-text {
-    color: #fff;
-    /* Puedes ajustar el color del texto según tus necesidades */
+.bi {
+    margin-right: 3px;
 }
