@@ -4,14 +4,13 @@ import { useLocation } from "wouter";
 import { AuthContext } from "../../../context/AuthContext";
 
 export default function ProfilePage() {
-    //    const { isAuthenticated } = useContext(AuthContext);
-    //    const [, setLocation] = useLocation(); // 2. Usar el hook useLocation
+    const { isAuthenticated } = useContext(AuthContext);
+    const [, setLocation] = useLocation();
 
-    //    useEffect(() => {
-    // 2. Usa useEffect
-    //        if (!isAuthenticated) {
-    //           setLocation("/login");
-    //       }
-    //   }, [setLocation, isAuthenticated]);
+    useEffect(() => {
+        if (!isAuthenticated) {
+            setLocation("/login");
+        }
+    }, [setLocation, isAuthenticated]);
     return <Order />;
 }

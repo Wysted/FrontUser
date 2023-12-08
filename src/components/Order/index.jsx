@@ -22,7 +22,34 @@ function Order() {
             <div className="content">
                 <h1 className="content-tittle">Pedidos</h1>
                 <div className="container-article">
-                    {order.lenght > 0 ? "hay pedidos" : "no tiene pedidos"}
+                    {/*order.lenght > 0 ? "hay pedidos" : "no tiene pedidos"*/}
+                    <Article
+                        id="a"
+                        Freserva="asdasd"
+                        Fviaje="asdasd"
+                        origen="asdasd"
+                        destino="Pendiente"
+                        estado="Cancelado"
+                        detalles="deata"
+                    />
+                    <Article
+                        id="a"
+                        Freserva="asdasd"
+                        Fviaje="asdasd"
+                        origen="asdasd"
+                        destino="Pendiente"
+                        estado="Pendiente"
+                        detalles="deata"
+                    />
+                    <Article
+                        id="a"
+                        Freserva="asdasd"
+                        Fviaje="asdasd"
+                        origen="asdasd"
+                        destino="Pendiente"
+                        estado="Realizado"
+                        detalles="deata"
+                    />
                 </div>
             </div>
         </div>

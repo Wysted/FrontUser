@@ -50,12 +50,10 @@
         /* Mostrar las opciones en una columna */
         align-items: center;
         /* Centrar las opciones verticalmente */
-
     }
 
     .user-menu {
         padding: 0;
-
     }
 
     .horizontal-menu li {
