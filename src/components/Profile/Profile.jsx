@@ -46,6 +46,7 @@ export default function Profile() {
                             apellidoMaterno={user.SegundoApellido}
                             apellidoPaterno={user.Apellido}
                             fono={user.Fono}
+                            img={user.img}
                             setUpdate={setToggle}
                         >
                             <svg

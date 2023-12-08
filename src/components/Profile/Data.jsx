@@ -6,12 +6,13 @@ export default function Data({
     apellidoPaterno,
     apellidoMaterno,
     fono,
+    img,
 }) {
     return (
         <div className="container_data">
             <div className="container_img">
                 <img
-                    src="https://http.cat/101"
+                    src={img ? img : "/predeterminado.png"}
                     alt="Gato"
                 />
             </div>
